@@ -3,445 +3,385 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Poster session vote</title>
+<title>SPSP 2026 · Poster session vote</title>
 <style>
   :root {
-    --surface-2: #f4f4f5;
-    --border: #e4e4e7;
-    --bg-accent: #eff6ff;
-    --fill-accent: #3b82f6;
-    --text-primary: #18181b;
-    --text-secondary: #52525b;
-    --text-muted: #a1a1aa;
+    --bg:            #0f0e17;
+    --surface-1:     #1a1830;
+    --surface-2:     #252340;
+    --border:        #312f55;
+    --bg-accent:     #2a1f4a;
+    --fill-accent:   #c084fc;
+    --text-primary:  #f0eeff;
+    --text-secondary:#b8b4d8;
+    --text-muted:    #7068a0;
+    --success:       #34d399;
+    --error:         #f87171;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --surface-2: #27272a;
-      --border: #3f3f46;
-      --bg-accent: #1e3a5f;
-      --fill-accent: #60a5fa;
-      --text-primary: #fafafa;
-      --text-secondary: #a1a1aa;
-      --text-muted: #71717a;
-    }
-  }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     font-family: system-ui, -apple-system, sans-serif;
-    background: transparent;
+    background: var(--bg);
     color: var(--text-primary);
     min-height: 100vh;
-    padding: 24px 16px 48px;
+    padding: 32px 16px 64px;
   }
+  .container { max-width: 900px; margin: 0 auto; }
 
-  .container { max-width: 860px; margin: 0 auto; }
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 36px 24px 32px;
+    margin-bottom: 32px;
+    background: linear-gradient(135deg, #1a1830 0%, #2a1f4a 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 0%, rgba(192,132,252,.18) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 100%, rgba(99,102,241,.14) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--fill-accent); margin-bottom: 10px; }
+  .hero h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+  .hero p  { font-size: 14px; color: var(--text-secondary); max-width: 480px; margin: 0 auto; line-height: 1.6; }
 
-  header { margin-bottom: 28px; }
-  header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-  header p  { font-size: 14px; color: var(--text-secondary); }
+  /* Gate */
+  .gate { max-width: 420px; margin: 0 auto 40px; background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px; padding: 32px 28px; }
+  .gate h2 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .gate-sub { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 6px; }
+  .field input { width: 100%; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 13px; font-size: 14px; color: var(--text-primary); outline: none; transition: border-color .15s; }
+  .field input::placeholder { color: var(--text-muted); }
+  .field input:focus { border-color: var(--fill-accent); }
+  .gate-error { font-size: 12px; color: var(--error); margin-bottom: 14px; min-height: 16px; }
 
-  .status-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-  .counter { font-weight: 600; color: var(--text-primary); }
-  .link-btn {
-    background: none;
-    border: none;
-    color: var(--fill-accent);
-    cursor: pointer;
-    font-size: 13px;
-    padding: 0;
-    text-decoration: underline;
-  }
-  .link-btn:hover { opacity: 0.8; }
+  /* Buttons */
+  .btn-primary { width: 100%; background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff; border: none; border-radius: 9px; padding: 12px 24px; font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity .15s, transform .1s; }
+  .btn-primary:disabled { opacity: .35; cursor: not-allowed; }
+  .btn-primary:not(:disabled):hover { opacity: .9; }
+  .btn-primary:not(:disabled):active { transform: scale(.98); }
+  .link-btn { background: none; border: none; color: var(--fill-accent); cursor: pointer; font-size: 13px; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
+  .link-btn:hover { opacity: .8; }
 
-  /* Poster grid */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 12px;
-    margin-bottom: 28px;
-  }
+  /* Status bar */
+  .status-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary); }
+  .voter-tag { font-size: 12px; color: var(--text-muted); background: var(--surface-2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; }
+  .counter { font-weight: 700; color: var(--fill-accent); }
+  .pill-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
-  .card {
-    background: var(--surface-2);
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 14px 12px;
-    cursor: pointer;
-    transition: border-color .15s, background .15s, opacity .15s;
-    user-select: none;
-  }
-  .card:hover:not(.disabled):not(.selected) {
-    border-color: var(--fill-accent);
-    opacity: .9;
-  }
-  .card.selected {
-    border-color: var(--fill-accent);
-    background: var(--bg-accent);
-  }
-  .card.disabled {
-    opacity: .45;
-    cursor: not-allowed;
-  }
-  .card-num {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 5px;
-    font-variant-numeric: tabular-nums;
-  }
-  .card-title {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.4;
-    margin-bottom: 6px;
-    color: var(--text-primary);
-  }
-  .card-author {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
+  /* Grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .card { background: var(--surface-1); border: 2px solid var(--border); border-radius: 12px; padding: 16px 15px 14px; cursor: pointer; transition: border-color .15s, background .15s, opacity .15s, transform .1s; user-select: none; position: relative; }
+  .card:hover:not(.disabled):not(.selected) { border-color: #7c3aed; background: var(--surface-2); transform: translateY(-1px); }
+  .card.selected { border-color: var(--fill-accent); background: var(--bg-accent); }
+  .card.selected::after { content: '\2713'; position: absolute; top: 10px; right: 12px; font-size: 14px; font-weight: 800; color: var(--fill-accent); }
+  .card.disabled { opacity: .35; cursor: not-allowed; transform: none; }
+  .card-num { font-size: 22px; font-weight: 800; color: var(--fill-accent); opacity: .75; margin-bottom: 8px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .card-title { font-size: 13.5px; font-weight: 600; line-height: 1.45; margin-bottom: 8px; color: var(--text-primary); }
+  .card-author { font-size: 12px; color: var(--text-muted); font-style: italic; }
 
   /* Submit */
-  .submit-wrap { display: flex; justify-content: flex-end; margin-bottom: 8px; }
-  .btn-submit {
-    background: var(--fill-accent);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 11px 28px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: opacity .15s;
-  }
-  .btn-submit:disabled { opacity: .4; cursor: not-allowed; }
-  .btn-submit:not(:disabled):hover { opacity: .88; }
+  .submit-wrap { display: flex; justify-content: flex-end; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .submit-hint { font-size: 13px; color: var(--text-muted); }
+  .btn-submit { background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff; border: none; border-radius: 9px; padding: 12px 32px; font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity .15s, transform .1s; white-space: nowrap; }
+  .btn-submit:disabled { opacity: .3; cursor: not-allowed; }
+  .btn-submit:not(:disabled):hover { opacity: .9; }
+  .btn-submit:not(:disabled):active { transform: scale(.98); }
 
-  /* Thank-you / results */
-  .thankyou {
-    text-align: center;
-    padding: 32px 0 20px;
-    margin-bottom: 28px;
-  }
-  .thankyou h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-  .thankyou p  { font-size: 14px; color: var(--text-secondary); }
+  /* Thank-you */
+  .thankyou { text-align: center; padding: 40px 24px 32px; margin-bottom: 28px; background: linear-gradient(135deg, #1a1830, #1a2a1e); border: 1px solid #2d4a35; border-radius: 16px; }
+  .thankyou-icon { font-size: 40px; margin-bottom: 14px; }
+  .thankyou h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+  .thankyou p  { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+  .thankyou-name { color: var(--success); font-weight: 600; }
 
-  /* Bar chart */
-  .results-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 14px;
-  }
-  .results-header h2 { font-size: 17px; font-weight: 700; }
+  /* Results lock */
+  .results-lock { max-width: 380px; margin: 0 auto; text-align: center; padding: 48px 0 16px; }
+  .results-lock .lock-icon { font-size: 34px; margin-bottom: 16px; }
+  .results-lock h2 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .results-lock p  { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; }
+  .lock-row { display: flex; gap: 8px; }
+  .lock-row input { flex: 1; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 13px; font-size: 14px; color: var(--text-primary); outline: none; transition: border-color .15s; }
+  .lock-row input::placeholder { color: var(--text-muted); }
+  .lock-row input:focus { border-color: var(--fill-accent); }
+  .btn-unlock { background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: opacity .15s; }
+  .btn-unlock:hover { opacity: .88; }
+  .lock-error { font-size: 12px; color: var(--error); margin-top: 10px; min-height: 16px; }
+
+  /* Chart */
+  .results-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 6px; }
+  .results-header h2 { font-size: 18px; font-weight: 800; }
   .total-votes { font-size: 13px; color: var(--text-muted); }
+  .chart { display: flex; flex-direction: column; gap: 9px; }
+  .bar-row { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .bar-label { width: 190px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-secondary); line-height: 1.3; }
+  .bar-label .medal { margin-right: 3px; }
+  .bar-track { flex: 1; background: var(--surface-2); border-radius: 5px; height: 28px; position: relative; overflow: visible; }
+  .bar-fill { height: 100%; border-radius: 5px; background: linear-gradient(90deg, #7c3aed, #a855f7); transition: width .5s cubic-bezier(.4,0,.2,1); display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; position: relative; }
+  .bar-fill.gold   { background: linear-gradient(90deg, #d97706, #f59e0b); }
+  .bar-fill.silver { background: linear-gradient(90deg, #6b7280, #9ca3af); }
+  .bar-fill.bronze { background: linear-gradient(90deg, #92400e, #b45309); }
+  .bar-count-inside  { font-size: 11px; font-weight: 800; color: #fff; white-space: nowrap; }
+  .bar-count-outside { font-size: 11px; font-weight: 600; color: var(--text-muted); position: absolute; left: calc(100% + 7px); white-space: nowrap; }
 
-  .chart { display: flex; flex-direction: column; gap: 8px; }
-  .bar-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-  }
-  .bar-label {
-    width: 200px;
-    flex-shrink: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--text-secondary);
-    line-height: 1.3;
-  }
-  .bar-label .medal { margin-right: 4px; }
-  .bar-track {
-    flex: 1;
-    background: var(--surface-2);
-    border-radius: 4px;
-    height: 26px;
-    position: relative;
-    overflow: visible;
-  }
-  .bar-fill {
-    height: 100%;
-    border-radius: 4px;
-    background: var(--fill-accent);
-    transition: width .4s ease;
-    min-width: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 6px;
-    position: relative;
-  }
-  .bar-count-inside {
-    font-size: 11px;
-    font-weight: 700;
-    color: #fff;
-    white-space: nowrap;
-  }
-  .bar-count-outside {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    position: absolute;
-    left: calc(100% + 6px);
-    white-space: nowrap;
-  }
-
-  .back-link { margin-top: 24px; text-align: center; }
-
-  /* Utility */
+  .back-link { margin-top: 28px; text-align: center; }
   .hidden { display: none !important; }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- VOTE VIEW -->
-  <div id="view-vote">
-    <header>
-      <h1>Poster session vote</h1>
-      <p>Select your 3 favorite posters, then submit your vote.</p>
-    </header>
+  <div class="hero">
+    <div class="hero-eyebrow">SPSP 2026 · Cambridge</div>
+    <h1>Poster session vote</h1>
+    <p>Cast your vote for the 3 posters you found most compelling. Each attendee may vote once.</p>
+  </div>
 
-    <div class="status-bar">
-      <span>Selected: <span class="counter" id="selected-count">0</span> / 3</span>
-      <button class="link-btn" id="btn-see-results">View current results</button>
+  <div id="view-login">
+    <div class="gate">
+      <h2>Attendee sign-in</h2>
+      <p class="gate-sub">Please enter your details to proceed to the ballot.</p>
+      <div class="field">
+        <label>Full name</label>
+        <input type="text" id="input-name" placeholder="e.g. María García López" autocomplete="name">
+      </div>
+      <div class="field">
+        <label>Email address</label>
+        <input type="email" id="input-email" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div class="gate-error" id="login-error"></div>
+      <button class="btn-primary" id="btn-login">Continue to ballot →</button>
     </div>
+  </div>
 
+  <div id="view-vote" class="hidden">
+    <div class="status-bar">
+      <div class="pill-row">
+        <span class="voter-tag" id="voter-label"></span>
+        <span>Selected: <span class="counter" id="selected-count">0</span> / 3</span>
+      </div>
+      <button class="link-btn" id="btn-see-results">View results (organizer)</button>
+    </div>
     <div class="grid" id="poster-grid"></div>
-
     <div class="submit-wrap">
+      <span class="submit-hint" id="submit-hint">Choose 3 posters to enable submit</span>
       <button class="btn-submit" id="btn-submit" disabled>Submit vote</button>
     </div>
   </div>
 
-  <!-- THANK-YOU VIEW -->
   <div id="view-done" class="hidden">
     <div class="thankyou">
+      <div class="thankyou-icon">🎉</div>
       <h2>Thank you for voting!</h2>
-      <p>Your selections have been recorded. Live results are shown below.</p>
+      <p>Your selections have been recorded, <span class="thankyou-name" id="done-name"></span>.<br>Results will be announced at the end of the session.</p>
     </div>
-    <div id="chart-done"></div>
   </div>
 
-  <!-- RESULTS-ONLY VIEW -->
-  <div id="view-results" class="hidden">
-    <header>
-      <h1>Poster session results</h1>
-      <p>Live vote tallies — updates each time you refresh.</p>
-    </header>
-    <div id="chart-results"></div>
+  <div id="view-results-lock" class="hidden">
+    <div class="results-lock">
+      <div class="lock-icon">🔒</div>
+      <h2>Organizer access</h2>
+      <p>Results are password-protected and will be revealed by the session chair.</p>
+      <div class="lock-row">
+        <input type="password" id="results-pw" placeholder="Enter password" autocomplete="off">
+        <button class="btn-unlock" id="btn-unlock">Unlock</button>
+      </div>
+      <div class="lock-error" id="lock-error"></div>
+    </div>
     <div class="back-link">
-      <button class="link-btn" id="btn-back-to-vote">← Back to vote</button>
+      <button class="link-btn" id="btn-lock-back">← Back</button>
+    </div>
+  </div>
+
+  <div id="view-results" class="hidden">
+    <div class="results-header">
+      <h2>Current standings</h2>
+      <span class="total-votes" id="total-votes-label"></span>
+    </div>
+    <div class="chart" id="chart-container"></div>
+    <div class="back-link">
+      <button class="link-btn" id="btn-results-back">← Back</button>
     </div>
   </div>
 
 </div>
 <script>
-// ─── Poster data ────────────────────────────────────────────────────────────
-// Edit this array to swap in real poster data.
-const POSTERS = [
-  { id:  1, title: "No Atoms, No Chemistry? Dalton's Chemistry Just Before Atomic Theory",                                                                                                                   author: "Ana Maria Possamai" },
-  { id:  2, title: "A Philosophical Approach to Rare Diseases",                                                                                                                                              author: "Anne Fenoy" },
-  { id:  3, title: "Causal Process Modelling for Better Evaluation and Planning",                                                                                                                            author: "Brendan Kelters" },
-  { id:  4, title: "Can science education really remove superstitions?",                                                                                                                                     author: "Deepika Bansal" },
-  { id:  5, title: "Investigating Population Health through a Performative Lens",                                                                                                                            author: "Elena Popa" },
-  { id:  6, title: "Effects of incorporating scientific uncertainty into undergraduate STEM classes",                                                                                                         author: "Elizabeth Coody" },
-  { id:  7, title: "Integrating HPS: Leveraging Complementary Science in the analysis of hydrogen-forming enzymes",                                                                                         author: "Florian Riemer" },
-  { id:  8, title: "Fostering integration across the diverse methodological landscape of human behaviour research",                                                                                          author: "Ingo Brigandt" },
-  { id:  9, title: "Authority, legitimacy, and the role of the researcher in adapting and validating protocols: an epistemological analysis",                                                               author: "Ingrid Lamminpää" },
-  { id: 10, title: "Bias and Expertise: Think tank framing in Canadian news media",                                                                                                                          author: "Jacob Hamel-Mottiez" },
-  { id: 11, title: "Social science, metaethics and public policy: Conceptual problems in the \"turn to values\"",                                                                                            author: "Keryn Hassall" },
-  { id: 12, title: "The teratological blindspot: challenges for a philosophical understanding of normativity in the developmental study of malformations and synthetic embryos",                             author: "Leyre Celada-Marcén" },
-  { id: 13, title: "Redefining Fitness for Purpose: lessons from fusion energy systems design",                                                                                                              author: "Marc Raguz" },
-  { id: 14, title: "A Blind Morphism from the Iteration of Multimodal Determination and Model Design",                                                                                                      author: "Mario Chalita" },
-  { id: 15, title: "From Stories to Epistemology: Preservice Teachers' NOS Ideas Informed by Scientists with Disabilities' Narratives",                                                                    author: "Mila Rosa Librea-Carden" },
-  { id: 16, title: "A Proposed Linguistic Turn in Philosophy of Science",                                                                                                                                    author: "Monika Rydzewski" },
-  { id: 17, title: "Is Cognition Low-Dimensional?",                                                                                                                                                         author: "Phillip Kieval" },
-  { id: 18, title: "Reconnecting \"Science Practices\": What Science Education Can Learn from Philosophy of Science in Practice",                                                                            author: "Ron Gray" },
-  { id: 19, title: "An Ethnomethodological Demystification of the Algorithmic",                                                                                                                             author: "Sabreen Syeed" },
-  { id: 20, title: "Is PSP bound to ontological pluralism, and what does it entail? A metaphysical discussion in the context of an inquiry with biologists",                                                author: "Sélène Domino" },
-  { id: 21, title: "How can an integrated history and philosophy of science help in the context of the debate between new mechanism and processual ontology? The relevance of the other biological synthesis of Julian S. Huxley (1887–1975)", author: "Stefan Bernhardt-Radu" },
-  { id: 22, title: "Menarche, Menopause, and Missing Male Markers: Gendered Kinds in the Classification of Age",                                                                                            author: "Tashmia Sabera" },
-  { id: 23, title: "Toward a Unified Approach to Philosophy of Science and Clinical Research Ethics: The Values-in-Science Standard and the Social Value Requirement",                                      author: "Ukyo Shimizu" },
-  { id: 24, title: "On synthetic medical data: values hierarchies, reification, and zombies",                                                                                                               author: "Yael Friedman" },
-  { id: 25, title: "An Enactive Account of Scientific Models and Representations",                                                                                                                          author: "Yuyou Wu" },
-  { id: 26, title: "Clusters and Clustering: Natural Kinds Meet Statistical Practice",                                                                                                                      author: "Zina Ward" },
+var RESULTS_PASSWORD = 'SPSP2028Bogota';
+var MAX_VOTES  = 3;
+var SHARED_KEY = 'poster-votes-data';
+var VOTED_KEY  = 'poster-has-voted';
+var VOTER_KEY  = 'poster-voter-name';
+
+var POSTERS = [
+  { id:  1, title: "No Atoms, No Chemistry? Dalton's Chemistry Just Before Atomic Theory", author: "Ana Maria Possamai" },
+  { id:  2, title: "A Philosophical Approach to Rare Diseases", author: "Anne Fenoy" },
+  { id:  3, title: "Causal Process Modelling for Better Evaluation and Planning", author: "Brendan Kelters" },
+  { id:  4, title: "Can science education really remove superstitions?", author: "Deepika Bansal" },
+  { id:  5, title: "Investigating Population Health through a Performative Lens", author: "Elena Popa" },
+  { id:  6, title: "Effects of incorporating scientific uncertainty into undergraduate STEM classes", author: "Elizabeth Coody" },
+  { id:  7, title: "Integrating HPS: Leveraging Complementary Science in the analysis of hydrogen-forming enzymes", author: "Florian Riemer" },
+  { id:  8, title: "Fostering integration across the diverse methodological landscape of human behaviour research", author: "Ingo Brigandt" },
+  { id:  9, title: "Authority, legitimacy, and the role of the researcher in adapting and validating protocols: an epistemological analysis", author: "Ingrid Lamminpää" },
+  { id: 10, title: "Bias and Expertise: Think tank framing in Canadian news media", author: "Jacob Hamel-Mottiez" },
+  { id: 11, title: "Social science, metaethics and public policy: Conceptual problems in the turn to values", author: "Keryn Hassall" },
+  { id: 12, title: "The teratological blindspot: challenges for a philosophical understanding of normativity in the developmental study of malformations and synthetic embryos", author: "Leyre Celada-Marcén" },
+  { id: 13, title: "Redefining Fitness for Purpose: lessons from fusion energy systems design", author: "Marc Raguz" },
+  { id: 14, title: "A Blind Morphism from the Iteration of Multimodal Determination and Model Design", author: "Mario Chalita" },
+  { id: 15, title: "From Stories to Epistemology: Preservice Teachers NOS Ideas Informed by Scientists with Disabilities Narratives", author: "Mila Rosa Librea-Carden" },
+  { id: 16, title: "A Proposed Linguistic Turn in Philosophy of Science", author: "Monika Rydzewski" },
+  { id: 17, title: "Is Cognition Low-Dimensional?", author: "Phillip Kieval" },
+  { id: 18, title: "Reconnecting Science Practices: What Science Education Can Learn from Philosophy of Science in Practice", author: "Ron Gray" },
+  { id: 19, title: "An Ethnomethodological Demystification of the Algorithmic", author: "Sabreen Syeed" },
+  { id: 20, title: "Is PSP bound to ontological pluralism, and what does it entail? A metaphysical discussion in the context of an inquiry with biologists", author: "Selene Domino" },
+  { id: 21, title: "How can an integrated history and philosophy of science help in the context of the debate between new mechanism and processual ontology? The relevance of the other biological synthesis of Julian S. Huxley (1887-1975)", author: "Stefan Bernhardt-Radu" },
+  { id: 22, title: "Menarche, Menopause, and Missing Male Markers: Gendered Kinds in the Classification of Age", author: "Tashmia Sabera" },
+  { id: 23, title: "Toward a Unified Approach to Philosophy of Science and Clinical Research Ethics: The Values-in-Science Standard and the Social Value Requirement", author: "Ukyo Shimizu" },
+  { id: 24, title: "On synthetic medical data: values hierarchies, reification, and zombies", author: "Yael Friedman" },
+  { id: 25, title: "An Enactive Account of Scientific Models and Representations", author: "Yuyou Wu" },
+  { id: 26, title: "Clusters and Clustering: Natural Kinds Meet Statistical Practice", author: "Zina Ward" }
 ];
 
-const MAX_VOTES = 3;
-const SHARED_KEY = 'poster-votes-data';
-const VOTED_KEY  = 'poster-has-voted';
+var selected  = new Set();
+var voteCounts = {};
+var hasVoted  = false;
+var voterName = '';
+var prevView  = 'vote';
 
-// ─── State ──────────────────────────────────────────────────────────────────
-let selected  = new Set();   // ids chosen this session
-let voteCounts = {};         // { id: count }
-let hasVoted  = false;
-
-// ─── Init ────────────────────────────────────────────────────────────────────
-POSTERS.forEach(p => voteCounts[p.id] = 0);
+POSTERS.forEach(function(p) { voteCounts[p.id] = 0; });
 
 async function init() {
-  // Load shared vote tallies
-  try {
-    const r = await window.storage.get(SHARED_KEY, true);
-    if (r && r.value) {
-      const stored = JSON.parse(r.value);
-      POSTERS.forEach(p => { voteCounts[p.id] = stored[p.id] || 0; });
-    }
-  } catch (_) {}
-
-  // Load per-device voted flag
-  try {
-    const r = await window.storage.get(VOTED_KEY, false);
-    if (r && r.value === '1') hasVoted = true;
-  } catch (_) {}
-
-  if (hasVoted) {
-    showDone();
-  } else {
-    buildGrid();
-    showView('vote');
-  }
+  try { var r = await window.storage.get(SHARED_KEY, true); if (r && r.value) { var s = JSON.parse(r.value); POSTERS.forEach(function(p){ voteCounts[p.id] = s[p.id] || 0; }); } } catch(e) {}
+  try { var r2 = await window.storage.get(VOTED_KEY, false); if (r2 && r2.value === '1') hasVoted = true; } catch(e) {}
+  try { var r3 = await window.storage.get(VOTER_KEY, false); if (r3 && r3.value) voterName = r3.value; } catch(e) {}
+  if (hasVoted) { document.getElementById('done-name').textContent = voterName || 'you'; showView('done'); }
+  else { showView('login'); }
 }
 
-// ─── Grid ────────────────────────────────────────────────────────────────────
+document.getElementById('btn-login').addEventListener('click', handleLogin);
+document.getElementById('input-email').addEventListener('keydown', function(e){ if(e.key==='Enter') handleLogin(); });
+
+function handleLogin() {
+  var name  = document.getElementById('input-name').value.trim();
+  var email = document.getElementById('input-email').value.trim();
+  var err   = document.getElementById('login-error');
+  if (!name)  { err.textContent = 'Please enter your full name.'; return; }
+  if (!email || !email.includes('@')) { err.textContent = 'Please enter a valid email address.'; return; }
+  err.textContent = '';
+  voterName = name;
+  document.getElementById('voter-label').textContent = name;
+  buildGrid();
+  showView('vote');
+}
+
 function buildGrid() {
-  const grid = document.getElementById('poster-grid');
+  var grid = document.getElementById('poster-grid');
   grid.innerHTML = '';
-  POSTERS.forEach(p => {
-    const card = document.createElement('div');
+  POSTERS.forEach(function(p) {
+    var card = document.createElement('div');
     card.className = 'card';
     card.dataset.id = p.id;
-    card.innerHTML = `
-      <div class="card-num">Poster ${p.id}</div>
-      <div class="card-title">${esc(p.title)}</div>
-      <div class="card-author">${esc(p.author)}</div>
-    `;
-    card.addEventListener('click', () => toggleCard(p.id));
+    card.innerHTML = '<div class="card-num">' + String(p.id).padStart(2,'0') + '</div>'
+      + '<div class="card-title">' + esc(p.title) + '</div>'
+      + '<div class="card-author">' + esc(p.author) + '</div>';
+    card.addEventListener('click', function(){ toggleCard(p.id); });
     grid.appendChild(card);
   });
   refreshGrid();
 }
 
 function toggleCard(id) {
-  if (selected.has(id)) {
-    selected.delete(id);
-  } else {
-    if (selected.size >= MAX_VOTES) return;
-    selected.add(id);
-  }
+  if (selected.has(id)) { selected.delete(id); }
+  else { if (selected.size >= MAX_VOTES) return; selected.add(id); }
   refreshGrid();
 }
 
 function refreshGrid() {
-  const full = selected.size >= MAX_VOTES;
-  document.querySelectorAll('.card').forEach(card => {
-    const id = +card.dataset.id;
-    const isSel = selected.has(id);
+  var full = selected.size >= MAX_VOTES;
+  document.querySelectorAll('.card').forEach(function(card) {
+    var id = +card.dataset.id;
+    var isSel = selected.has(id);
     card.classList.toggle('selected', isSel);
     card.classList.toggle('disabled', full && !isSel);
   });
   document.getElementById('selected-count').textContent = selected.size;
-  document.getElementById('btn-submit').disabled = selected.size !== MAX_VOTES;
+  var ready = selected.size === MAX_VOTES;
+  document.getElementById('btn-submit').disabled = !ready;
+  var rem = MAX_VOTES - selected.size;
+  document.getElementById('submit-hint').textContent = ready
+    ? 'Ready — submit when you are sure'
+    : 'Choose ' + rem + ' more poster' + (rem !== 1 ? 's' : '');
 }
 
-// ─── Submit ──────────────────────────────────────────────────────────────────
-document.getElementById('btn-submit').addEventListener('click', async () => {
+document.getElementById('btn-submit').addEventListener('click', async function() {
   if (selected.size !== MAX_VOTES) return;
-
-  // Reload shared counts first (another voter may have gone ahead)
-  try {
-    const r = await window.storage.get(SHARED_KEY, true);
-    if (r && r.value) {
-      const fresh = JSON.parse(r.value);
-      POSTERS.forEach(p => { voteCounts[p.id] = fresh[p.id] || 0; });
-    }
-  } catch (_) {}
-
-  selected.forEach(id => { voteCounts[id] = (voteCounts[id] || 0) + 1; });
-
-  try {
-    await window.storage.set(SHARED_KEY, JSON.stringify(voteCounts), true);
-  } catch (_) {}
-  try {
-    await window.storage.set(VOTED_KEY, '1', false);
-  } catch (_) {}
-
+  try { var r = await window.storage.get(SHARED_KEY, true); if (r && r.value) { var f = JSON.parse(r.value); POSTERS.forEach(function(p){ voteCounts[p.id] = f[p.id] || 0; }); } } catch(e) {}
+  selected.forEach(function(id){ voteCounts[id] = (voteCounts[id] || 0) + 1; });
+  try { await window.storage.set(SHARED_KEY, JSON.stringify(voteCounts), true); } catch(e) {}
+  try { await window.storage.set(VOTED_KEY, '1', false); } catch(e) {}
+  try { await window.storage.set(VOTER_KEY, voterName, false); } catch(e) {}
   hasVoted = true;
-  showDone();
-});
-
-// ─── Views ───────────────────────────────────────────────────────────────────
-function showView(name) {
-  ['vote','done','results'].forEach(v =>
-    document.getElementById(`view-${v}`).classList.toggle('hidden', v !== name));
-}
-
-function showDone() {
-  renderChart('chart-done');
+  document.getElementById('done-name').textContent = voterName || 'you';
   showView('done');
-}
-
-document.getElementById('btn-see-results').addEventListener('click', () => {
-  renderChart('chart-results');
-  showView('results');
 });
 
-document.getElementById('btn-back-to-vote').addEventListener('click', () => {
-  if (hasVoted) { showDone(); } else { showView('vote'); }
-});
+document.getElementById('btn-see-results').addEventListener('click', function(){ prevView = 'vote'; showView('results-lock'); });
+document.getElementById('btn-unlock').addEventListener('click', tryUnlock);
+document.getElementById('results-pw').addEventListener('keydown', function(e){ if(e.key==='Enter') tryUnlock(); });
 
-// ─── Chart ───────────────────────────────────────────────────────────────────
-function renderChart(containerId) {
-  const container = document.getElementById(containerId);
-  const medals = ['🥇','🥈','🥉'];
-
-  const sorted = [...POSTERS]
-    .map(p => ({ ...p, votes: voteCounts[p.id] || 0 }))
-    .sort((a, b) => b.votes - a.votes || a.id - b.id);
-
-  const maxVotes = sorted[0]?.votes || 0;
-  const totalVotes = Object.values(voteCounts).reduce((s, v) => s + v, 0);
-
-  container.innerHTML = `
-    <div class="results-header">
-      <h2>Current standings</h2>
-      <span class="total-votes">${totalVotes} vote${totalVotes !== 1 ? 's' : ''} cast</span>
-    </div>
-    <div class="chart">
-      ${sorted.map((p, i) => {
-        const pct = maxVotes > 0 ? (p.votes / maxVotes) * 100 : 0;
-        const medal = i < 3 && p.votes > 0 ? `<span class="medal">${medals[i]}</span>` : '';
-        const showInside = pct >= 12 && p.votes > 0;
-        return `
-          <div class="bar-row">
-            <div class="bar-label" title="${esc(p.author)}">${medal}${esc(p.author)}</div>
-            <div class="bar-track">
-              <div class="bar-fill" style="width:${pct}%">
-                ${showInside ? `<span class="bar-count-inside">${p.votes}</span>` : ''}
-                ${!showInside ? `<span class="bar-count-outside">${p.votes > 0 ? p.votes : ''}</span>` : ''}
-              </div>
-            </div>
-          </div>`;
-      }).join('')}
-    </div>`;
+function tryUnlock() {
+  if (document.getElementById('results-pw').value === RESULTS_PASSWORD) {
+    document.getElementById('results-pw').value = '';
+    document.getElementById('lock-error').textContent = '';
+    renderChart();
+    showView('results');
+  } else {
+    document.getElementById('lock-error').textContent = 'Incorrect password. Please try again.';
+  }
 }
 
-// ─── Util ─────────────────────────────────────────────────────────────────────
+document.getElementById('btn-lock-back').addEventListener('click', function(){
+  document.getElementById('results-pw').value = '';
+  document.getElementById('lock-error').textContent = '';
+  showView(prevView);
+});
+document.getElementById('btn-results-back').addEventListener('click', function(){ showView(hasVoted ? 'done' : 'vote'); });
+
+function renderChart() {
+  var medals    = ['🥇','🥈','🥉'];
+  var fillClass = ['gold','silver','bronze'];
+  var sorted = POSTERS.slice().map(function(p){ return Object.assign({}, p, { votes: voteCounts[p.id] || 0 }); })
+    .sort(function(a,b){ return b.votes - a.votes || a.id - b.id; });
+  var maxVotes   = sorted.length ? sorted[0].votes : 0;
+  var totalVotes = Object.values(voteCounts).reduce(function(s,v){ return s+v; }, 0);
+  document.getElementById('total-votes-label').textContent = totalVotes + ' vote' + (totalVotes !== 1 ? 's' : '') + ' cast';
+  document.getElementById('chart-container').innerHTML = sorted.map(function(p, i) {
+    var pct    = maxVotes > 0 ? (p.votes / maxVotes * 100) : 0;
+    var medal  = (i < 3 && p.votes > 0) ? '<span class="medal">' + medals[i] + '</span>' : '';
+    var extra  = (i < 3 && p.votes > 0) ? fillClass[i] : '';
+    var showIn = pct >= 14 && p.votes > 0;
+    return '<div class="bar-row">'
+      + '<div class="bar-label" title="' + esc(p.author) + '">' + medal + esc(p.author) + '</div>'
+      + '<div class="bar-track"><div class="bar-fill ' + extra + '" style="width:' + pct + '%">'
+      + (showIn  ? '<span class="bar-count-inside">'  + p.votes + '</span>' : '')
+      + (!showIn ? '<span class="bar-count-outside">' + (p.votes > 0 ? p.votes : '') + '</span>' : '')
+      + '</div></div></div>';
+  }).join('');
+}
+
+var VIEWS = ['login','vote','done','results-lock','results'];
+function showView(name) {
+  VIEWS.forEach(function(v){ document.getElementById('view-' + v).classList.toggle('hidden', v !== name); });
+}
+
 function esc(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 init();

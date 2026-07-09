@@ -27,7 +27,7 @@
     padding: 32px 16px 64px;
   }
   .container { max-width: 900px; margin: 0 auto; }
-
+ 
   /* Hero */
   .hero {
     text-align: center;
@@ -50,7 +50,7 @@
   .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--fill-accent); margin-bottom: 10px; }
   .hero h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
   .hero p  { font-size: 14px; color: var(--text-secondary); max-width: 480px; margin: 0 auto; line-height: 1.6; }
-
+ 
   /* Gate */
   .gate { max-width: 420px; margin: 0 auto 40px; background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px; padding: 32px 28px; }
   .gate h2 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
@@ -61,7 +61,7 @@
   .field input::placeholder { color: var(--text-muted); }
   .field input:focus { border-color: var(--fill-accent); }
   .gate-error { font-size: 12px; color: var(--error); margin-bottom: 14px; min-height: 16px; }
-
+ 
   /* Buttons */
   .btn-primary { width: 100%; background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff; border: none; border-radius: 9px; padding: 12px 24px; font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity .15s, transform .1s; }
   .btn-primary:disabled { opacity: .35; cursor: not-allowed; }
@@ -69,13 +69,13 @@
   .btn-primary:not(:disabled):active { transform: scale(.98); }
   .link-btn { background: none; border: none; color: var(--fill-accent); cursor: pointer; font-size: 13px; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
   .link-btn:hover { opacity: .8; }
-
+ 
   /* Status bar */
   .status-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary); }
   .voter-tag { font-size: 12px; color: var(--text-muted); background: var(--surface-2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; }
   .counter { font-weight: 700; color: var(--fill-accent); }
   .pill-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-
+ 
   /* Grid */
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; margin-bottom: 28px; }
   .card { background: var(--surface-1); border: 2px solid var(--border); border-radius: 12px; padding: 16px 15px 14px; cursor: pointer; transition: border-color .15s, background .15s, opacity .15s, transform .1s; user-select: none; position: relative; }
@@ -86,7 +86,7 @@
   .card-num { font-size: 22px; font-weight: 800; color: var(--fill-accent); opacity: .75; margin-bottom: 8px; line-height: 1; font-variant-numeric: tabular-nums; }
   .card-title { font-size: 13.5px; font-weight: 600; line-height: 1.45; margin-bottom: 8px; color: var(--text-primary); }
   .card-author { font-size: 12px; color: var(--text-muted); font-style: italic; }
-
+ 
   /* Submit */
   .submit-wrap { display: flex; justify-content: flex-end; align-items: center; gap: 16px; margin-bottom: 8px; }
   .submit-hint { font-size: 13px; color: var(--text-muted); }
@@ -94,14 +94,14 @@
   .btn-submit:disabled { opacity: .3; cursor: not-allowed; }
   .btn-submit:not(:disabled):hover { opacity: .9; }
   .btn-submit:not(:disabled):active { transform: scale(.98); }
-
+ 
   /* Thank-you */
   .thankyou { text-align: center; padding: 40px 24px 32px; margin-bottom: 28px; background: linear-gradient(135deg, #1a1830, #1a2a1e); border: 1px solid #2d4a35; border-radius: 16px; }
   .thankyou-icon { font-size: 40px; margin-bottom: 14px; }
   .thankyou h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
   .thankyou p  { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
   .thankyou-name { color: var(--success); font-weight: 600; }
-
+ 
   /* Results lock */
   .results-lock { max-width: 380px; margin: 0 auto; text-align: center; padding: 48px 0 16px; }
   .results-lock .lock-icon { font-size: 34px; margin-bottom: 16px; }
@@ -114,7 +114,13 @@
   .btn-unlock { background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: opacity .15s; }
   .btn-unlock:hover { opacity: .88; }
   .lock-error { font-size: 12px; color: var(--error); margin-top: 10px; min-height: 16px; }
-
+ 
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 24px; background: var(--surface-2); border-radius: 10px; padding: 4px; }
+  .tab-btn { flex: 1; background: none; border: none; color: var(--text-muted); font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 7px; cursor: pointer; transition: background .15s, color .15s; }
+  .tab-btn.active { background: var(--surface-1); color: var(--text-primary); }
+  .tab-btn:hover:not(.active) { color: var(--text-secondary); }
+ 
   /* Chart */
   .results-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 6px; }
   .results-header h2 { font-size: 18px; font-weight: 800; }
@@ -130,20 +136,36 @@
   .bar-fill.bronze { background: linear-gradient(90deg, #92400e, #b45309); }
   .bar-count-inside  { font-size: 11px; font-weight: 800; color: #fff; white-space: nowrap; }
   .bar-count-outside { font-size: 11px; font-weight: 600; color: var(--text-muted); position: absolute; left: calc(100% + 7px); white-space: nowrap; }
-
+ 
+  /* Attendee list */
+  .attendee-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 6px; }
+  .attendee-header h2 { font-size: 18px; font-weight: 800; }
+  .attendee-count { font-size: 13px; color: var(--text-muted); }
+  .attendee-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .attendee-table th { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); padding: 0 12px 10px; border-bottom: 1px solid var(--border); }
+  .attendee-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: middle; }
+  .attendee-table tr:last-child td { border-bottom: none; }
+  .attendee-table tr:hover td { background: var(--surface-2); }
+  .attendee-num { font-size: 11px; color: var(--text-muted); font-variant-numeric: tabular-nums; width: 32px; }
+  .attendee-name { font-weight: 600; color: var(--text-primary); }
+  .attendee-email { color: var(--text-muted); font-size: 12px; }
+  .attendee-time { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+  .empty-state { text-align: center; padding: 48px 0; color: var(--text-muted); font-size: 14px; }
+ 
   .back-link { margin-top: 28px; text-align: center; }
   .hidden { display: none !important; }
 </style>
 </head>
 <body>
 <div class="container">
-
+ 
   <div class="hero">
     <div class="hero-eyebrow">SPSP 2026 · Cambridge</div>
     <h1>Poster session vote</h1>
     <p>Cast your vote for the 3 posters you found most compelling. Each attendee may vote once.</p>
   </div>
-
+ 
+  <!-- LOGIN -->
   <div id="view-login">
     <div class="gate">
       <h2>Attendee sign-in</h2>
@@ -160,7 +182,8 @@
       <button class="btn-primary" id="btn-login">Continue to ballot →</button>
     </div>
   </div>
-
+ 
+  <!-- VOTE -->
   <div id="view-vote" class="hidden">
     <div class="status-bar">
       <div class="pill-row">
@@ -175,7 +198,8 @@
       <button class="btn-submit" id="btn-submit" disabled>Submit vote</button>
     </div>
   </div>
-
+ 
+  <!-- THANK-YOU -->
   <div id="view-done" class="hidden">
     <div class="thankyou">
       <div class="thankyou-icon">🎉</div>
@@ -183,7 +207,8 @@
       <p>Your selections have been recorded, <span class="thankyou-name" id="done-name"></span>.<br>Results will be announced at the end of the session.</p>
     </div>
   </div>
-
+ 
+  <!-- RESULTS PASSWORD GATE -->
   <div id="view-results-lock" class="hidden">
     <div class="results-lock">
       <div class="lock-icon">🔒</div>
@@ -199,26 +224,46 @@
       <button class="link-btn" id="btn-lock-back">← Back</button>
     </div>
   </div>
-
+ 
+  <!-- RESULTS + ATTENDEES -->
   <div id="view-results" class="hidden">
-    <div class="results-header">
-      <h2>Current standings</h2>
-      <span class="total-votes" id="total-votes-label"></span>
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-standings" onclick="switchTab('standings')">📊 Standings</button>
+      <button class="tab-btn" id="tab-attendees" onclick="switchTab('attendees')">👥 Attendees</button>
     </div>
-    <div class="chart" id="chart-container"></div>
+ 
+    <!-- Standings tab -->
+    <div id="panel-standings">
+      <div class="results-header">
+        <h2>Current standings</h2>
+        <span class="total-votes" id="total-votes-label"></span>
+      </div>
+      <div class="chart" id="chart-container"></div>
+    </div>
+ 
+    <!-- Attendees tab -->
+    <div id="panel-attendees" class="hidden">
+      <div class="attendee-header">
+        <h2>Signed-in attendees</h2>
+        <span class="attendee-count" id="attendee-count-label"></span>
+      </div>
+      <div id="attendee-list"></div>
+    </div>
+ 
     <div class="back-link">
       <button class="link-btn" id="btn-results-back">← Back</button>
     </div>
   </div>
-
+ 
 </div>
 <script>
 var RESULTS_PASSWORD = 'SPSP2028Bogota';
-var MAX_VOTES  = 3;
-var SHARED_KEY = 'poster-votes-data';
-var VOTED_KEY  = 'poster-has-voted';
-var VOTER_KEY  = 'poster-voter-name';
-
+var MAX_VOTES    = 3;
+var SHARED_KEY   = 'poster-votes-data';
+var VOTED_KEY    = 'poster-has-voted';
+var VOTER_KEY    = 'poster-voter-name';
+var REGISTRY_KEY = 'poster-voter-registry';
+ 
 var POSTERS = [
   { id:  1, title: "No Atoms, No Chemistry? Dalton's Chemistry Just Before Atomic Theory", author: "Ana Maria Possamai" },
   { id:  2, title: "A Philosophical Approach to Rare Diseases", author: "Anne Fenoy" },
@@ -247,15 +292,17 @@ var POSTERS = [
   { id: 25, title: "An Enactive Account of Scientific Models and Representations", author: "Yuyou Wu" },
   { id: 26, title: "Clusters and Clustering: Natural Kinds Meet Statistical Practice", author: "Zina Ward" }
 ];
-
-var selected  = new Set();
+ 
+var selected   = new Set();
 var voteCounts = {};
-var hasVoted  = false;
-var voterName = '';
-var prevView  = 'vote';
-
+var hasVoted   = false;
+var voterName  = '';
+var voterEmail = '';
+var prevView   = 'vote';
+var registry   = [];   // [{name, email, time}]
+ 
 POSTERS.forEach(function(p) { voteCounts[p.id] = 0; });
-
+ 
 async function init() {
   try { var r = await window.storage.get(SHARED_KEY, true); if (r && r.value) { var s = JSON.parse(r.value); POSTERS.forEach(function(p){ voteCounts[p.id] = s[p.id] || 0; }); } } catch(e) {}
   try { var r2 = await window.storage.get(VOTED_KEY, false); if (r2 && r2.value === '1') hasVoted = true; } catch(e) {}
@@ -263,10 +310,11 @@ async function init() {
   if (hasVoted) { document.getElementById('done-name').textContent = voterName || 'you'; showView('done'); }
   else { showView('login'); }
 }
-
+ 
+// Login
 document.getElementById('btn-login').addEventListener('click', handleLogin);
 document.getElementById('input-email').addEventListener('keydown', function(e){ if(e.key==='Enter') handleLogin(); });
-
+ 
 function handleLogin() {
   var name  = document.getElementById('input-name').value.trim();
   var email = document.getElementById('input-email').value.trim();
@@ -274,12 +322,14 @@ function handleLogin() {
   if (!name)  { err.textContent = 'Please enter your full name.'; return; }
   if (!email || !email.includes('@')) { err.textContent = 'Please enter a valid email address.'; return; }
   err.textContent = '';
-  voterName = name;
+  voterName  = name;
+  voterEmail = email;
   document.getElementById('voter-label').textContent = name;
   buildGrid();
   showView('vote');
 }
-
+ 
+// Grid
 function buildGrid() {
   var grid = document.getElementById('poster-grid');
   grid.innerHTML = '';
@@ -295,13 +345,13 @@ function buildGrid() {
   });
   refreshGrid();
 }
-
+ 
 function toggleCard(id) {
   if (selected.has(id)) { selected.delete(id); }
   else { if (selected.size >= MAX_VOTES) return; selected.add(id); }
   refreshGrid();
 }
-
+ 
 function refreshGrid() {
   var full = selected.size >= MAX_VOTES;
   document.querySelectorAll('.card').forEach(function(card) {
@@ -318,41 +368,70 @@ function refreshGrid() {
     ? 'Ready — submit when you are sure'
     : 'Choose ' + rem + ' more poster' + (rem !== 1 ? 's' : '');
 }
-
+ 
+// Submit — saves votes AND appends voter to shared registry
 document.getElementById('btn-submit').addEventListener('click', async function() {
   if (selected.size !== MAX_VOTES) return;
+ 
+  // Refresh vote counts
   try { var r = await window.storage.get(SHARED_KEY, true); if (r && r.value) { var f = JSON.parse(r.value); POSTERS.forEach(function(p){ voteCounts[p.id] = f[p.id] || 0; }); } } catch(e) {}
   selected.forEach(function(id){ voteCounts[id] = (voteCounts[id] || 0) + 1; });
   try { await window.storage.set(SHARED_KEY, JSON.stringify(voteCounts), true); } catch(e) {}
+ 
+  // Append to shared registry
+  try {
+    var reg = [];
+    var rr = await window.storage.get(REGISTRY_KEY, true);
+    if (rr && rr.value) reg = JSON.parse(rr.value);
+    reg.push({ name: voterName, email: voterEmail, time: new Date().toISOString() });
+    await window.storage.set(REGISTRY_KEY, JSON.stringify(reg), true);
+  } catch(e) {}
+ 
+  // Mark as voted on this device
   try { await window.storage.set(VOTED_KEY, '1', false); } catch(e) {}
   try { await window.storage.set(VOTER_KEY, voterName, false); } catch(e) {}
+ 
   hasVoted = true;
   document.getElementById('done-name').textContent = voterName || 'you';
   showView('done');
 });
-
+ 
+// Results flow
 document.getElementById('btn-see-results').addEventListener('click', function(){ prevView = 'vote'; showView('results-lock'); });
 document.getElementById('btn-unlock').addEventListener('click', tryUnlock);
 document.getElementById('results-pw').addEventListener('keydown', function(e){ if(e.key==='Enter') tryUnlock(); });
-
-function tryUnlock() {
+ 
+async function tryUnlock() {
   if (document.getElementById('results-pw').value === RESULTS_PASSWORD) {
     document.getElementById('results-pw').value = '';
     document.getElementById('lock-error').textContent = '';
+    // Load latest registry
+    try { var rr = await window.storage.get(REGISTRY_KEY, true); if (rr && rr.value) registry = JSON.parse(rr.value); } catch(e) {}
     renderChart();
+    renderAttendees();
+    switchTab('standings');
     showView('results');
   } else {
     document.getElementById('lock-error').textContent = 'Incorrect password. Please try again.';
   }
 }
-
+ 
 document.getElementById('btn-lock-back').addEventListener('click', function(){
   document.getElementById('results-pw').value = '';
   document.getElementById('lock-error').textContent = '';
   showView(prevView);
 });
 document.getElementById('btn-results-back').addEventListener('click', function(){ showView(hasVoted ? 'done' : 'vote'); });
-
+ 
+// Tabs
+function switchTab(name) {
+  document.getElementById('tab-standings').classList.toggle('active', name === 'standings');
+  document.getElementById('tab-attendees').classList.toggle('active', name === 'attendees');
+  document.getElementById('panel-standings').classList.toggle('hidden', name !== 'standings');
+  document.getElementById('panel-attendees').classList.toggle('hidden', name !== 'attendees');
+}
+ 
+// Chart
 function renderChart() {
   var medals    = ['🥇','🥈','🥉'];
   var fillClass = ['gold','silver','bronze'];
@@ -374,16 +453,45 @@ function renderChart() {
       + '</div></div></div>';
   }).join('');
 }
-
+ 
+// Attendee list
+function renderAttendees() {
+  var count = registry.length;
+  document.getElementById('attendee-count-label').textContent = count + ' attendee' + (count !== 1 ? 's' : '') + ' voted';
+  var container = document.getElementById('attendee-list');
+  if (count === 0) {
+    container.innerHTML = '<div class="empty-state">No votes recorded yet.</div>';
+    return;
+  }
+  var rows = registry.map(function(v, i) {
+    var dt = '';
+    try {
+      var d = new Date(v.time);
+      dt = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } catch(e) {}
+    return '<tr>'
+      + '<td class="attendee-num">' + (i + 1) + '</td>'
+      + '<td><div class="attendee-name">' + esc(v.name) + '</div>'
+      +     '<div class="attendee-email">' + esc(v.email) + '</div></td>'
+      + '<td class="attendee-time">' + dt + '</td>'
+      + '</tr>';
+  }).join('');
+  container.innerHTML = '<table class="attendee-table">'
+    + '<thead><tr><th>#</th><th>Attendee</th><th>Time</th></tr></thead>'
+    + '<tbody>' + rows + '</tbody>'
+    + '</table>';
+}
+ 
+// View switcher
 var VIEWS = ['login','vote','done','results-lock','results'];
 function showView(name) {
   VIEWS.forEach(function(v){ document.getElementById('view-' + v).classList.toggle('hidden', v !== name); });
 }
-
+ 
 function esc(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-
+ 
 init();
 </script>
 </body>

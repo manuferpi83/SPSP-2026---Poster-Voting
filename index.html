@@ -19,39 +19,15 @@
     --error:         #f87171;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: system-ui, -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    min-height: 100vh;
-    padding: 32px 16px 64px;
-  }
+  body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; padding: 32px 16px 64px; }
   .container { max-width: 900px; margin: 0 auto; }
 
-  /* Hero */
-  .hero {
-    text-align: center;
-    padding: 36px 24px 32px;
-    margin-bottom: 32px;
-    background: linear-gradient(135deg, #1a1830 0%, #2a1f4a 100%);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 70% 0%, rgba(192,132,252,.18) 0%, transparent 60%),
-                radial-gradient(ellipse at 20% 100%, rgba(99,102,241,.14) 0%, transparent 55%);
-    pointer-events: none;
-  }
+  .hero { text-align: center; padding: 36px 24px 32px; margin-bottom: 32px; background: linear-gradient(135deg, #1a1830 0%, #2a1f4a 100%); border: 1px solid var(--border); border-radius: 16px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 0%, rgba(192,132,252,.18) 0%, transparent 60%), radial-gradient(ellipse at 20% 100%, rgba(99,102,241,.14) 0%, transparent 55%); pointer-events: none; }
   .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--fill-accent); margin-bottom: 10px; }
   .hero h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
-  .hero p  { font-size: 14px; color: var(--text-secondary); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+  .hero p { font-size: 14px; color: var(--text-secondary); max-width: 480px; margin: 0 auto; line-height: 1.6; }
 
-  /* Gate */
   .gate { max-width: 420px; margin: 0 auto 40px; background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px; padding: 32px 28px; }
   .gate h2 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
   .gate-sub { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; }
@@ -62,7 +38,6 @@
   .field input:focus { border-color: var(--fill-accent); }
   .gate-error { font-size: 12px; color: var(--error); margin-bottom: 14px; min-height: 16px; }
 
-  /* Buttons */
   .btn-primary { width: 100%; background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff; border: none; border-radius: 9px; padding: 12px 24px; font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity .15s, transform .1s; }
   .btn-primary:disabled { opacity: .35; cursor: not-allowed; }
   .btn-primary:not(:disabled):hover { opacity: .9; }
@@ -70,13 +45,11 @@
   .link-btn { background: none; border: none; color: var(--fill-accent); cursor: pointer; font-size: 13px; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
   .link-btn:hover { opacity: .8; }
 
-  /* Status bar */
   .status-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary); }
   .voter-tag { font-size: 12px; color: var(--text-muted); background: var(--surface-2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; }
   .counter { font-weight: 700; color: var(--fill-accent); }
   .pill-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
-  /* Grid */
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; margin-bottom: 28px; }
   .card { background: var(--surface-1); border: 2px solid var(--border); border-radius: 12px; padding: 16px 15px 14px; cursor: pointer; transition: border-color .15s, background .15s, opacity .15s, transform .1s; user-select: none; position: relative; }
   .card:hover:not(.disabled):not(.selected) { border-color: #7c3aed; background: var(--surface-2); transform: translateY(-1px); }
@@ -87,7 +60,6 @@
   .card-title { font-size: 13.5px; font-weight: 600; line-height: 1.45; margin-bottom: 8px; color: var(--text-primary); }
   .card-author { font-size: 12px; color: var(--text-muted); font-style: italic; }
 
-  /* Submit */
   .submit-wrap { display: flex; justify-content: flex-end; align-items: center; gap: 16px; margin-bottom: 8px; }
   .submit-hint { font-size: 13px; color: var(--text-muted); }
   .btn-submit { background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff; border: none; border-radius: 9px; padding: 12px 32px; font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity .15s, transform .1s; white-space: nowrap; }
@@ -95,18 +67,16 @@
   .btn-submit:not(:disabled):hover { opacity: .9; }
   .btn-submit:not(:disabled):active { transform: scale(.98); }
 
-  /* Thank-you */
   .thankyou { text-align: center; padding: 40px 24px 32px; margin-bottom: 28px; background: linear-gradient(135deg, #1a1830, #1a2a1e); border: 1px solid #2d4a35; border-radius: 16px; }
   .thankyou-icon { font-size: 40px; margin-bottom: 14px; }
   .thankyou h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-  .thankyou p  { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+  .thankyou p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
   .thankyou-name { color: var(--success); font-weight: 600; }
 
-  /* Results lock */
   .results-lock { max-width: 380px; margin: 0 auto; text-align: center; padding: 48px 0 16px; }
   .results-lock .lock-icon { font-size: 34px; margin-bottom: 16px; }
   .results-lock h2 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
-  .results-lock p  { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; }
+  .results-lock p { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; }
   .lock-row { display: flex; gap: 8px; }
   .lock-row input { flex: 1; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 13px; font-size: 14px; color: var(--text-primary); outline: none; transition: border-color .15s; }
   .lock-row input::placeholder { color: var(--text-muted); }
@@ -115,13 +85,11 @@
   .btn-unlock:hover { opacity: .88; }
   .lock-error { font-size: 12px; color: var(--error); margin-top: 10px; min-height: 16px; }
 
-  /* Tabs */
   .tabs { display: flex; gap: 4px; margin-bottom: 24px; background: var(--surface-2); border-radius: 10px; padding: 4px; }
   .tab-btn { flex: 1; background: none; border: none; color: var(--text-muted); font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 7px; cursor: pointer; transition: background .15s, color .15s; }
   .tab-btn.active { background: var(--surface-1); color: var(--text-primary); }
   .tab-btn:hover:not(.active) { color: var(--text-secondary); }
 
-  /* Chart */
   .results-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 6px; }
   .results-header h2 { font-size: 18px; font-weight: 800; }
   .total-votes { font-size: 13px; color: var(--text-muted); }
@@ -131,13 +99,12 @@
   .bar-label .medal { margin-right: 3px; }
   .bar-track { flex: 1; background: var(--surface-2); border-radius: 5px; height: 28px; position: relative; overflow: visible; }
   .bar-fill { height: 100%; border-radius: 5px; background: linear-gradient(90deg, #7c3aed, #a855f7); transition: width .5s cubic-bezier(.4,0,.2,1); display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; position: relative; }
-  .bar-fill.gold   { background: linear-gradient(90deg, #d97706, #f59e0b); }
+  .bar-fill.gold { background: linear-gradient(90deg, #d97706, #f59e0b); }
   .bar-fill.silver { background: linear-gradient(90deg, #6b7280, #9ca3af); }
   .bar-fill.bronze { background: linear-gradient(90deg, #92400e, #b45309); }
-  .bar-count-inside  { font-size: 11px; font-weight: 800; color: #fff; white-space: nowrap; }
+  .bar-count-inside { font-size: 11px; font-weight: 800; color: #fff; white-space: nowrap; }
   .bar-count-outside { font-size: 11px; font-weight: 600; color: var(--text-muted); position: absolute; left: calc(100% + 7px); white-space: nowrap; }
 
-  /* Attendee list */
   .attendee-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 6px; }
   .attendee-header h2 { font-size: 18px; font-weight: 800; }
   .attendee-count { font-size: 13px; color: var(--text-muted); }
@@ -151,6 +118,7 @@
   .attendee-email { color: var(--text-muted); font-size: 12px; }
   .attendee-time { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
   .empty-state { text-align: center; padding: 48px 0; color: var(--text-muted); font-size: 14px; }
+  .loading { text-align: center; padding: 48px 0; color: var(--text-muted); font-size: 14px; }
 
   .back-link { margin-top: 28px; text-align: center; }
   .hidden { display: none !important; }
@@ -162,10 +130,9 @@
   <div class="hero">
     <div class="hero-eyebrow">SPSP 2026 · Cambridge</div>
     <h1>Poster session vote</h1>
-    <p>Cast your vote for the 3 posters you found most compelling. Each attendee may vote once.</p>
+    <p>Cast your vote for the posters you found most compelling (up to 3). Each attendee may vote once.</p>
   </div>
 
-  <!-- LOGIN -->
   <div id="view-login">
     <div class="gate">
       <h2>Attendee sign-in</h2>
@@ -183,7 +150,6 @@
     </div>
   </div>
 
-  <!-- VOTE -->
   <div id="view-vote" class="hidden">
     <div class="status-bar">
       <div class="pill-row">
@@ -194,12 +160,11 @@
     </div>
     <div class="grid" id="poster-grid"></div>
     <div class="submit-wrap">
-      <span class="submit-hint" id="submit-hint">Select up to 3 posters, then submit</span>
+      <span class="submit-hint" id="submit-hint">Select at least 1 poster to enable submit</span>
       <button class="btn-submit" id="btn-submit" disabled>Submit vote</button>
     </div>
   </div>
 
-  <!-- THANK-YOU -->
   <div id="view-done" class="hidden">
     <div class="thankyou">
       <div class="thankyou-icon">🎉</div>
@@ -208,7 +173,6 @@
     </div>
   </div>
 
-  <!-- RESULTS PASSWORD GATE -->
   <div id="view-results-lock" class="hidden">
     <div class="results-lock">
       <div class="lock-icon">🔒</div>
@@ -225,14 +189,11 @@
     </div>
   </div>
 
-  <!-- RESULTS + ATTENDEES -->
   <div id="view-results" class="hidden">
     <div class="tabs">
       <button class="tab-btn active" id="tab-standings" onclick="switchTab('standings')">📊 Standings</button>
       <button class="tab-btn" id="tab-attendees" onclick="switchTab('attendees')">👥 Attendees</button>
     </div>
-
-    <!-- Standings tab -->
     <div id="panel-standings">
       <div class="results-header">
         <h2>Current standings</h2>
@@ -240,8 +201,6 @@
       </div>
       <div class="chart" id="chart-container"></div>
     </div>
-
-    <!-- Attendees tab -->
     <div id="panel-attendees" class="hidden">
       <div class="attendee-header">
         <h2>Signed-in attendees</h2>
@@ -249,7 +208,6 @@
       </div>
       <div id="attendee-list"></div>
     </div>
-
     <div class="back-link">
       <button class="link-btn" id="btn-results-back">← Back</button>
     </div>
@@ -257,13 +215,14 @@
 
 </div>
 <script>
+// ── Config ────────────────────────────────────────────────────────────────────
 var RESULTS_PASSWORD = 'SPSP2028Bogota';
-var MAX_VOTES    = 3;
-var SHARED_KEY   = 'poster-votes-data';
-var VOTED_KEY    = 'poster-has-voted';
-var VOTER_KEY    = 'poster-voter-name';
-var REGISTRY_KEY = 'poster-voter-registry';
+var MAX_VOTES        = 3;
+var JSONBIN_KEY      = '$2a$10$h9aBd.o3BR0ab01axK0.ju2F0GL5g5OGedLy1pi9DP8C36/yLSgR6';
+var BIN_ID           = '6a588c35da38895dfe64c7da'; // <-- replace after creating bin on jsonbin.io
+var BIN_URL          = 'https://api.jsonbin.io/v3/b/' + BIN_ID;
 
+// ── Poster data ───────────────────────────────────────────────────────────────
 var POSTERS = [
   { id:  1, title: "No Atoms, No Chemistry? Dalton's Chemistry Just Before Atomic Theory", author: "Ana Maria Possamai" },
   { id:  2, title: "A Philosophical Approach to Rare Diseases", author: "Anne Fenoy" },
@@ -293,27 +252,48 @@ var POSTERS = [
   { id: 26, title: "Clusters and Clustering: Natural Kinds Meet Statistical Practice", author: "Zina Ward" }
 ];
 
+// ── State ─────────────────────────────────────────────────────────────────────
 var selected   = new Set();
 var voteCounts = {};
 var hasVoted   = false;
 var voterName  = '';
 var voterEmail = '';
 var prevView   = 'vote';
-var registry   = [];   // [{name, email, time}]
+var registry   = [];
 
 POSTERS.forEach(function(p) { voteCounts[p.id] = 0; });
 
-async function init() {
-  try { var r = await window.storage.get(SHARED_KEY, true); if (r && r.value) { var s = JSON.parse(r.value); POSTERS.forEach(function(p){ voteCounts[p.id] = s[p.id] || 0; }); } } catch(e) {}
-  try { var r2 = await window.storage.get(VOTED_KEY, false); if (r2 && r2.value === '1') hasVoted = true; } catch(e) {}
-  try { var r3 = await window.storage.get(VOTER_KEY, false); if (r3 && r3.value) voterName = r3.value; } catch(e) {}
-  if (hasVoted) { document.getElementById('done-name').textContent = voterName || 'you'; showView('done'); }
-  else { showView('login'); }
+// ── JSONBin helpers ───────────────────────────────────────────────────────────
+function binGet() {
+  return fetch(BIN_URL + '/latest', {
+    headers: { 'X-Master-Key': JSONBIN_KEY }
+  }).then(function(r) { return r.json(); }).then(function(d) { return d.record; });
 }
 
-// Login
+function binSet(data) {
+  return fetch(BIN_URL, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_KEY },
+    body: JSON.stringify(data)
+  }).then(function(r) { return r.json(); });
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+function init() {
+  hasVoted   = localStorage.getItem('spsp2026-voted') === '1';
+  voterName  = localStorage.getItem('spsp2026-name') || '';
+
+  if (hasVoted) {
+    document.getElementById('done-name').textContent = voterName || 'you';
+    showView('done');
+  } else {
+    showView('login');
+  }
+}
+
+// ── Login ─────────────────────────────────────────────────────────────────────
 document.getElementById('btn-login').addEventListener('click', handleLogin);
-document.getElementById('input-email').addEventListener('keydown', function(e){ if(e.key==='Enter') handleLogin(); });
+document.getElementById('input-email').addEventListener('keydown', function(e) { if (e.key === 'Enter') handleLogin(); });
 
 function handleLogin() {
   var name  = document.getElementById('input-name').value.trim();
@@ -329,7 +309,7 @@ function handleLogin() {
   showView('vote');
 }
 
-// Grid
+// ── Grid ──────────────────────────────────────────────────────────────────────
 function buildGrid() {
   var grid = document.getElementById('poster-grid');
   grid.innerHTML = '';
@@ -337,10 +317,10 @@ function buildGrid() {
     var card = document.createElement('div');
     card.className = 'card';
     card.dataset.id = p.id;
-    card.innerHTML = '<div class="card-num">' + String(p.id).padStart(2,'0') + '</div>'
+    card.innerHTML = '<div class="card-num">' + String(p.id).padStart(2, '0') + '</div>'
       + '<div class="card-title">' + esc(p.title) + '</div>'
       + '<div class="card-author">' + esc(p.author) + '</div>';
-    card.addEventListener('click', function(){ toggleCard(p.id); });
+    card.addEventListener('click', function() { toggleCard(p.id); });
     grid.appendChild(card);
   });
   refreshGrid();
@@ -367,61 +347,69 @@ function refreshGrid() {
     : 'Selected ' + selected.size + ' of up to 3 — submit when ready';
 }
 
-// Submit — saves votes AND appends voter to shared registry
-document.getElementById('btn-submit').addEventListener('click', async function() {
+// ── Submit ────────────────────────────────────────────────────────────────────
+document.getElementById('btn-submit').addEventListener('click', function() {
   if (selected.size === 0) return;
+  var btn = document.getElementById('btn-submit');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
 
-  // Refresh vote counts
-  try { var r = await window.storage.get(SHARED_KEY, true); if (r && r.value) { var f = JSON.parse(r.value); POSTERS.forEach(function(p){ voteCounts[p.id] = f[p.id] || 0; }); } } catch(e) {}
-  selected.forEach(function(id){ voteCounts[id] = (voteCounts[id] || 0) + 1; });
-  try { await window.storage.set(SHARED_KEY, JSON.stringify(voteCounts), true); } catch(e) {}
-
-  // Append to shared registry
-  try {
-    var reg = [];
-    var rr = await window.storage.get(REGISTRY_KEY, true);
-    if (rr && rr.value) reg = JSON.parse(rr.value);
-    reg.push({ name: voterName, email: voterEmail, time: new Date().toISOString() });
-    await window.storage.set(REGISTRY_KEY, JSON.stringify(reg), true);
-  } catch(e) {}
-
-  // Mark as voted on this device
-  try { await window.storage.set(VOTED_KEY, '1', false); } catch(e) {}
-  try { await window.storage.set(VOTER_KEY, voterName, false); } catch(e) {}
-
-  hasVoted = true;
-  document.getElementById('done-name').textContent = voterName || 'you';
-  showView('done');
+  binGet().then(function(data) {
+    // Tally votes
+    selected.forEach(function(id) {
+      data.votes[String(id)] = (data.votes[String(id)] || 0) + 1;
+    });
+    // Append to registry
+    data.registry.push({ name: voterName, email: voterEmail, time: new Date().toISOString() });
+    return binSet(data);
+  }).then(function() {
+    localStorage.setItem('spsp2026-voted', '1');
+    localStorage.setItem('spsp2026-name', voterName);
+    hasVoted = true;
+    document.getElementById('done-name').textContent = voterName || 'you';
+    showView('done');
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit vote';
+    alert('There was a problem saving your vote. Please try again.');
+  });
 });
 
-// Results flow
-document.getElementById('btn-see-results').addEventListener('click', function(){ prevView = 'vote'; showView('results-lock'); });
+// ── Results flow ──────────────────────────────────────────────────────────────
+document.getElementById('btn-see-results').addEventListener('click', function() { prevView = 'vote'; showView('results-lock'); });
 document.getElementById('btn-unlock').addEventListener('click', tryUnlock);
-document.getElementById('results-pw').addEventListener('keydown', function(e){ if(e.key==='Enter') tryUnlock(); });
+document.getElementById('results-pw').addEventListener('keydown', function(e) { if (e.key === 'Enter') tryUnlock(); });
 
-async function tryUnlock() {
-  if (document.getElementById('results-pw').value === RESULTS_PASSWORD) {
-    document.getElementById('results-pw').value = '';
-    document.getElementById('lock-error').textContent = '';
-    // Load latest registry
-    try { var rr = await window.storage.get(REGISTRY_KEY, true); if (rr && rr.value) registry = JSON.parse(rr.value); } catch(e) {}
+function tryUnlock() {
+  if (document.getElementById('results-pw').value !== RESULTS_PASSWORD) {
+    document.getElementById('lock-error').textContent = 'Incorrect password. Please try again.';
+    return;
+  }
+  document.getElementById('results-pw').value = '';
+  document.getElementById('lock-error').textContent = '';
+  document.getElementById('chart-container').innerHTML = '<div class="loading">Loading results…</div>';
+  document.getElementById('attendee-list').innerHTML = '<div class="loading">Loading…</div>';
+  showView('results');
+  switchTab('standings');
+
+  binGet().then(function(data) {
+    POSTERS.forEach(function(p) { voteCounts[p.id] = data.votes[String(p.id)] || 0; });
+    registry = data.registry || [];
     renderChart();
     renderAttendees();
-    switchTab('standings');
-    showView('results');
-  } else {
-    document.getElementById('lock-error').textContent = 'Incorrect password. Please try again.';
-  }
+  }).catch(function() {
+    document.getElementById('chart-container').innerHTML = '<div class="empty-state">Could not load results. Check your connection.</div>';
+  });
 }
 
-document.getElementById('btn-lock-back').addEventListener('click', function(){
+document.getElementById('btn-lock-back').addEventListener('click', function() {
   document.getElementById('results-pw').value = '';
   document.getElementById('lock-error').textContent = '';
   showView(prevView);
 });
-document.getElementById('btn-results-back').addEventListener('click', function(){ showView(hasVoted ? 'done' : 'vote'); });
+document.getElementById('btn-results-back').addEventListener('click', function() { showView(hasVoted ? 'done' : 'vote'); });
 
-// Tabs
+// ── Tabs ──────────────────────────────────────────────────────────────────────
 function switchTab(name) {
   document.getElementById('tab-standings').classList.toggle('active', name === 'standings');
   document.getElementById('tab-attendees').classList.toggle('active', name === 'attendees');
@@ -429,14 +417,15 @@ function switchTab(name) {
   document.getElementById('panel-attendees').classList.toggle('hidden', name !== 'attendees');
 }
 
-// Chart
+// ── Chart ─────────────────────────────────────────────────────────────────────
 function renderChart() {
-  var medals    = ['🥇','🥈','🥉'];
-  var fillClass = ['gold','silver','bronze'];
-  var sorted = POSTERS.slice().map(function(p){ return Object.assign({}, p, { votes: voteCounts[p.id] || 0 }); })
-    .sort(function(a,b){ return b.votes - a.votes || a.id - b.id; });
+  var medals    = ['🥇', '🥈', '🥉'];
+  var fillClass = ['gold', 'silver', 'bronze'];
+  var sorted = POSTERS.slice()
+    .map(function(p) { return Object.assign({}, p, { votes: voteCounts[p.id] || 0 }); })
+    .sort(function(a, b) { return b.votes - a.votes || a.id - b.id; });
   var maxVotes   = sorted.length ? sorted[0].votes : 0;
-  var totalVotes = Object.values(voteCounts).reduce(function(s,v){ return s+v; }, 0);
+  var totalVotes = Object.values(voteCounts).reduce(function(s, v) { return s + v; }, 0);
   document.getElementById('total-votes-label').textContent = totalVotes + ' vote' + (totalVotes !== 1 ? 's' : '') + ' cast';
   document.getElementById('chart-container').innerHTML = sorted.map(function(p, i) {
     var pct    = maxVotes > 0 ? (p.votes / maxVotes * 100) : 0;
@@ -452,49 +441,33 @@ function renderChart() {
   }).join('');
 }
 
-// Attendee list — ordered by vote rank (poster standings order)
+// ── Attendees ─────────────────────────────────────────────────────────────────
 function renderAttendees() {
   var count = registry.length;
   document.getElementById('attendee-count-label').textContent = count + ' attendee' + (count !== 1 ? 's' : '') + ' voted';
   var container = document.getElementById('attendee-list');
-  if (count === 0) {
-    container.innerHTML = '<div class="empty-state">No votes recorded yet.</div>';
-    return;
-  }
-  // Build poster rank map (rank 1 = most votes)
-  var sortedPosters = POSTERS.slice()
-    .map(function(p){ return Object.assign({}, p, { votes: voteCounts[p.id] || 0 }); })
-    .sort(function(a,b){ return b.votes - a.votes || a.id - b.id; });
-  var rankMap = {};
-  sortedPosters.forEach(function(p, i){ rankMap[p.id] = i + 1; });
-
+  if (count === 0) { container.innerHTML = '<div class="empty-state">No votes recorded yet.</div>'; return; }
   var rows = registry.map(function(v, i) {
     var dt = '';
-    try {
-      var d = new Date(v.time);
-      dt = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    } catch(e) {}
+    try { dt = new Date(v.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); } catch(e) {}
     return '<tr>'
       + '<td class="attendee-num">' + (i + 1) + '</td>'
-      + '<td><div class="attendee-name">' + esc(v.name) + '</div>'
-      +     '<div class="attendee-email">' + esc(v.email) + '</div></td>'
+      + '<td><div class="attendee-name">' + esc(v.name) + '</div><div class="attendee-email">' + esc(v.email) + '</div></td>'
       + '<td class="attendee-time">' + dt + '</td>'
       + '</tr>';
   }).join('');
   container.innerHTML = '<table class="attendee-table">'
     + '<thead><tr><th>#</th><th>Attendee</th><th>Voted at</th></tr></thead>'
-    + '<tbody>' + rows + '</tbody>'
-    + '</table>';
+    + '<tbody>' + rows + '</tbody></table>';
 }
 
-// View switcher
-var VIEWS = ['login','vote','done','results-lock','results'];
+// ── Utilities ─────────────────────────────────────────────────────────────────
+var VIEWS = ['login', 'vote', 'done', 'results-lock', 'results'];
 function showView(name) {
-  VIEWS.forEach(function(v){ document.getElementById('view-' + v).classList.toggle('hidden', v !== name); });
+  VIEWS.forEach(function(v) { document.getElementById('view-' + v).classList.toggle('hidden', v !== name); });
 }
-
 function esc(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 init();
